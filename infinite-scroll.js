@@ -72,7 +72,7 @@ Blaze.TemplateInstance.prototype.infiniteScroll = function infiniteScroll(option
 
   //using collection instances package here to scan all collection and checks ours exists
   //may be a more elegant packageless solution but coudn't find anything
-  let collectionExists = Meteor.Collection.getAll().find(c => c.name === options.collection);
+  let collectionExists = Meteor.Collection.getAll().find(function(c) {return c.name === options.collection;});
     // Collection exists?
   if (!collectionExists) {
     throw new Error('Collection does not exist: ', options.collection);
